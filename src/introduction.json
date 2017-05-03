@@ -1,0 +1,44 @@
+{
+  "karaoke": {
+    "text": "カラオケ部においでよ！",
+    "img": [
+      "event1.png",
+      "event2.jpg",
+      "event3.jpg",
+      "event4.jpg"
+    ]
+  },
+  "dance": {
+    "text": "ダンス部においでよ！",
+    "img": [
+      "event1.png",
+      "event2.jpg",
+      "event3.jpg"
+    ]
+  },
+  "cooking": {
+    "text": "料理部においでよ！",
+    "img": [
+      "event1.png",
+      "event2.jpg"
+    ]
+  },
+  "literature": {
+    "text": "文芸部においでよ！",
+    "img": [
+      "event1.png"
+    ]
+  },
+  "erformance": {
+    "text": "演奏部においでよ！",
+    "img": [
+      "event1.png"
+    ]
+  },
+  "shodo": {
+    "text": "書道部においでよ！",
+    "img": [
+    ]
+  }
+}
+
