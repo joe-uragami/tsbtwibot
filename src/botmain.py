@@ -8,56 +8,52 @@ import json
 import random
 from datetime import datetime, time
 
-# API設定は環境変数で指定
-api = twitter.Api(consumer_key=os.environ["CONSUMER_KEY"],
-                  consumer_secret=os.environ["CONSUMER_SECRET"],
-                  access_token_key=os.environ["ACCESS_TOKEN_KEY"],
-                  access_token_secret=os.environ["ACCESS_TOKEN_SECRET"]
-                  )
-
-
-def tweet_introduction():
+def tweet_introduction(api):
     '''
     部活紹介用のデータを読み込み１件ランダムでツイートする
+    :param api:Twitter Api
     :return:
     '''
     # データ取得
-    f =  open('introduction.json', 'r')
-    intro_dict = json.load(f)
+    with open('introduction.json', 'r') as f:
+        intro_dict = json.load(f)
 
     intro = random.choice(intro_dict)
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
-    api.PostUpdates(status = intro['text'], media = intro['img'])
+    api.PostUpdates(status=intro['text'], media=intro['img'])
 
 
-def follow_back():
+def follow_back(api):
     '''
     フォローした人をフォローする
     他botで実装済みのためこちらでは実装しない
+    :param api:Twitter Api
     :return:
     '''
     pass
 
 
-def tag_retweet():
+def tag_retweet(api, nowtime, lowertime):
     '''
     ハッシュタグを検索してリツイートする
+    :param api:Twitter Api
+    :param nowtime:現在時間
+    :param nowtime:リツイートする範囲の下限時間
     :return:
     '''
     # データ取得
-    f =  open('hashtags.json', 'r')
-    tags = json.load(f)
+    with open('hashtags.json', 'r') as f:
+        tags = json.load(f)
 
     for tag in tags:
         # タグを検索
-        nowtime = int(time.mktime(datetime.now().timetuple()))
-        results = api.GetSearch(tarm = tag, count=50, result_type='recent')
+        results = api.GetSearch(tarm=tag, count=50, result_type='recent')
 
         for result in results:
             # 12時間以内の投稿だった場合リツイート
-            if result.created_at_in_seconds in range(nowtime-60*60*12, nowtime):
+            if lowertime <= result.created_at_in_seconds < nowtime:
                 try:
                     api.PostRetweet(result.id)
                 except:
@@ -70,18 +66,26 @@ def main(args):
     :param args:
     :return:
     '''
+    # API設定は環境変数で指定
+    api = twitter.Api(consumer_key=os.environ["CONSUMER_KEY"],
+                      consumer_secret=os.environ["CONSUMER_SECRET"],
+                      access_token_key=os.environ["ACCESS_TOKEN_KEY"],
+                      access_token_secret=os.environ["ACCESS_TOKEN_SECRET"]
+                      )
 
     if "ti" in args:
         # ランダムツイート
-        tweet_introduction()
+        tweet_introduction(api)
 
     if "fb" in args:
         # フォローしてくれた人をフォロー
-        follow_back()
+        follow_back(api)
 
     if "tr" in args:
         # ハッシュタグ検索してリツイート
-        tag_retweet()
+        nowtime = int(time.mktime(datetime.now().timetuple()))
+        lowertime = nowtime-60*60*12
+        tag_retweet(api, nowtime, lowertime)
 
 
 if __name__ == '__main__':
