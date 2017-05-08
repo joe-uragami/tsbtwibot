@@ -8,41 +8,49 @@ import json
 import random
 from datetime import datetime, time
 
+
 def tweet_introduction(api):
-    '''
+    """
     部活紹介用のデータを読み込み１件ランダムでツイートする
     :param api:Twitter Api
     :return:
-    '''
+    """
     # データ取得
-    with open('introduction.json', 'r') as f:
-        intro_dict = json.load(f)
+    with open(os.path.abspath(os.path.dirname(__file__)) + '/introduction.json', 'r') as f:
+        intro_list = json.load(f)
 
-    intro = random.choice(intro_dict)
+    intro = random.choice(intro_list)
+
+    media_list = []
+    for media in intro['img']:
+        media_list.append(
+            os.path.abspath(os.path.dirname(__file__)) +
+            '/attachment/' + media)
+
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
-    api.PostUpdates(status=intro['text'], media=intro['img'])
+    api.PostUpdates(status=intro['text'], media=media_list)
 
 
 def follow_back(api):
-    '''
+    """
     フォローした人をフォローする
     他botで実装済みのためこちらでは実装しない
     :param api:Twitter Api
     :return:
-    '''
+    """
     pass
 
 
 def tag_retweet(api, nowtime, lowertime):
-    '''
+    """
     ハッシュタグを検索してリツイートする
     :param api:Twitter Api
     :param nowtime:現在時間
-    :param nowtime:リツイートする範囲の下限時間
+    :param lowertime:リツイートする範囲の下限時間
     :return:
-    '''
+    """
     # データ取得
     with open('hashtags.json', 'r') as f:
         tags = json.load(f)
