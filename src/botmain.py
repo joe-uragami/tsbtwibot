@@ -9,6 +9,9 @@ import random
 from datetime import datetime, time
 
 
+abs_pass = os.path.abspath(os.path.dirname(__file__))
+
+
 def tweet_introduction(api):
     """
     部活紹介用のデータを読み込み１件ランダムでツイートする
@@ -16,17 +19,12 @@ def tweet_introduction(api):
     :return:
     """
     # データ取得
-    with open(os.path.abspath(os.path.dirname(__file__)) + '/introduction.json', 'r') as f:
+    with open(abs_pass + '/introduction.json', 'r') as f:
         intro_list = json.load(f)
 
     intro = random.choice(intro_list)
 
-    media_list = []
-    for media in intro['img']:
-        media_list.append(
-            os.path.abspath(os.path.dirname(__file__)) +
-            '/attachment/' + media)
-
+    media_list = [abs_pass + '/attachment/' + media for media in intro['img']]
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
@@ -52,7 +50,7 @@ def tag_retweet(api, nowtime, lowertime):
     :return:
     """
     # データ取得
-    with open('hashtags.json', 'r') as f:
+    with open(abs_pass + 'hashtags.json', 'r') as f:
         tags = json.load(f)
 
     for tag in tags:
