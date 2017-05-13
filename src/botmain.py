@@ -9,7 +9,7 @@ import random
 from datetime import datetime, time
 
 
-abs_pass = os.path.abspath(os.path.dirname(__file__))
+abs_path = os.path.abspath(os.path.dirname(__file__))
 
 
 def tweet_introduction(api):
@@ -19,12 +19,12 @@ def tweet_introduction(api):
     :return:
     """
     # データ取得
-    with open(abs_pass + '/introduction.json', 'r') as f:
+    with open(os.path.join(abs_path, 'introduction.json'), 'r') as f:
         intro_list = json.load(f)
 
     intro = random.choice(intro_list)
 
-    media_list = [abs_pass + '/attachment/' + media for media in intro['img']]
+    media_list = [os.path.join(abs_path, 'attachment', media) for media in intro['img']]
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
@@ -50,7 +50,7 @@ def tag_retweet(api, nowtime, lowertime):
     :return:
     """
     # データ取得
-    with open(abs_pass + 'hashtags.json', 'r') as f:
+    with open(os.path.join(abs_path, 'hashtags.json'), 'r') as f:
         tags = json.load(f)
 
     for tag in tags:
