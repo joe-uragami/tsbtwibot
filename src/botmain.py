@@ -58,12 +58,13 @@ def tag_retweet(api, nowtime, lowertime):
         results = api.GetSearch(tarm=tag, count=50, result_type='recent')
 
         for result in results:
-            # 12時間以内の投稿だった場合リツイート
-            if lowertime <= result.created_at_in_seconds < nowtime:
+            # 自分のツイートでない、12時間以内の投稿だった場合リツイート
+            if lowertime <= result.created_at_in_seconds() < nowtime \
+                    and not result.user.screen_name() == "10932club":
                 try:
-                    api.PostRetweet(result.id)
+                    api.PostRetweet(result.id())
                 except:
-                    print('既にリツイートされています')
+                    print('既にリツイートされてます')
 
 
 def main(args):
