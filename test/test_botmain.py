@@ -35,9 +35,9 @@ class TsbtwibotTest(TestCase):
         print("開始ー")
 
         mock_result = MagicMock()
-        mock_result.created_at_in_seconds.return_value = 2000
-        mock_result.user.return_value.screen_name.return_value = 'joe_uragami'
-        mock_result.id.return_value = '1919'
+        mock_result.created_at_in_seconds = 2000
+        mock_result.user.screen_name = 'joe_uragami'
+        mock_result.id = '1919'
 
         api = twitter.Api()
         api.GetSearch = MagicMock()
@@ -61,9 +61,9 @@ class TsbtwibotTest(TestCase):
         print("開始ー")
 
         mock_result = MagicMock()
-        mock_result.created_at_in_seconds.return_value = 200
-        mock_result.user.return_value.screen_name.return_value = 'joe_uragami'
-        mock_result.id.return_value = '1919'
+        mock_result.created_at_in_seconds = 200
+        mock_result.user.screen_name = 'joe_uragami'
+        mock_result.id = '1919'
 
         api = twitter.Api()
         api.GetSearch = MagicMock()
@@ -82,9 +82,9 @@ class TsbtwibotTest(TestCase):
         print("開始ー")
 
         mock_result = MagicMock()
-        mock_result.created_at_in_seconds.return_value = 200
-        mock_result.user.return_value.screen_name.return_value = '10932club'
-        mock_result.id.return_value = '1919'
+        mock_result.created_at_in_seconds = 2000
+        mock_result.user.screen_name = '10932club'
+        mock_result.id = '1919'
 
         api = twitter.Api()
         api.GetSearch = MagicMock()
