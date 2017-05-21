@@ -8,7 +8,8 @@ import twitter
 
 import json
 import random
-from datetime import datetime, time
+import time
+import datetime
 
 
 abs_path = os.path.abspath(os.path.dirname(__file__))
