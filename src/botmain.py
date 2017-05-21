@@ -69,7 +69,7 @@ def tag_retweet(api, nowtime, lowertime):
                 except:
                     # print('既にリツイートされてます')
                     pass
-                
+
 
 
 def main(args):

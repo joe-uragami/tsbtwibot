@@ -1,34 +1,34 @@
 [
-  {
-    "text": "特ソン部においでよ！",
-    "img": [
-      "shodo1.jpg",
-      "shodo2.jpg",
-      "shodo3.jpg",
-      "shodo4.jpg"
-    ]
-  },
-  {
-    "text": "ダンス部においでよ！",
-    "img": [
-      "shodo1.jpg",
-      "shodo2.jpg",
-      "shodo3.jpg"
-    ]
-  },
-  {
-    "text": "料理部においでよ！",
-    "img": [
-      "shodo1.jpg",
-      "shodo2.jpg"
-    ]
-  },
-  {
-    "text": "文芸部においでよ！",
-    "img": [
-      "shodo1.jpg"
-    ]
-  },
+//  {
+//    "text": "特ソン部においでよ！",
+//    "img": [
+//      "shodo1.jpg",
+//      "shodo2.jpg",
+//      "shodo3.jpg",
+//      "shodo4.jpg"
+//    ]
+//  },
+//  {
+//    "text": "ダンス部においでよ！",
+//    "img": [
+//      "shodo1.jpg",
+//      "shodo2.jpg",
+//      "shodo3.jpg"
+//    ]
+//  },
+//  {
+//    "text": "料理部においでよ！",
+//    "img": [
+//      "shodo1.jpg",
+//      "shodo2.jpg"
+//    ]
+//  },
+//  {
+//    "text": "文芸部においでよ！",
+//    "img": [
+//      "shodo1.jpg"
+//    ]
+//  },
   {
     "text": "演奏部においでよ！",
     "img": [
@@ -38,6 +38,7 @@
   {
     "text": "書道部においでよ！",
     "img": [
+      "sample.m4v"
     ]
   }
 ]
