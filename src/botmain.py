@@ -68,7 +68,7 @@ def tag_retweet(api, nowtime, lowertime):
                     api.PostRetweet(result.id)
                 except:
                     # print('既にリツイートされてます')
-                    pass
+                    continue
 
 
 
