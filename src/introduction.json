@@ -1,38 +1,38 @@
 [
   {
-    "text": "カラオケ部においでよ！",
+    "text": "特ソン部においでよ！",
     "img": [
-      "event1.png",
-      "event2.jpg",
-      "event3.jpg",
-      "event4.jpg"
+      "shodo1.jpg",
+      "shodo2.jpg",
+      "shodo3.jpg",
+      "shodo4.jpg"
     ]
   },
   {
     "text": "ダンス部においでよ！",
     "img": [
-      "event1.png",
-      "event2.jpg",
-      "event3.jpg"
+      "shodo1.jpg",
+      "shodo2.jpg",
+      "shodo3.jpg"
     ]
   },
   {
     "text": "料理部においでよ！",
     "img": [
-      "event1.png",
-      "event2.jpg"
+      "shodo1.jpg",
+      "shodo2.jpg"
     ]
   },
   {
     "text": "文芸部においでよ！",
     "img": [
-      "event1.png"
+      "shodo1.jpg"
     ]
   },
   {
     "text": "演奏部においでよ！",
     "img": [
-      "event1.png"
+      "sample.m4v"
     ]
   },
   {
