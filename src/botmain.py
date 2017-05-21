@@ -30,13 +30,10 @@ def tweet_introduction(api):
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
-    api.PostUpdates(status=intro['text'], media=media_list)
-    # if len(media_list) > 1:
-    #     api.PostUpdates(status=intro['text'], media=media_list)
-    # elif len(media_list) == 1:
-    #     api.PostUpdates(status=intro['text'], media=media_list[0])
-    # else:
-    #     api.PostUpdates(status=intro['text'])
+    if len(media_list) == 1:
+        api.PostUpdates(status=intro['text'], media=media_list[0])
+    else:
+        api.PostUpdates(status=intro['text'], media=media_list)
 
 
 def follow_back(api):
