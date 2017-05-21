@@ -9,8 +9,7 @@ import twitter
 import json
 import random
 import time
-import datetime
-
+from datetime import datetime
 
 abs_path = os.path.abspath(os.path.dirname(__file__))
 
