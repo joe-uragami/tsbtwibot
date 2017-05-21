@@ -57,7 +57,7 @@ def tag_retweet(api, nowtime, lowertime):
 
     for tag in tags:
         # タグを検索
-        results = api.GetSearch(tarm=tag, count=50, result_type='recent')
+        results = api.GetSearch(term=tag, count=50, result_type='recent')
 
         for result in results:
             # 自分のツイートでない、12時間以内の投稿だった場合リツイート
