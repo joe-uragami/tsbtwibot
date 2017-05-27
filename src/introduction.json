@@ -2,16 +2,17 @@
   {
     "text": "特ソン部においでよ！",
     "img": [
-      "sample.mp4"
+      "shodo1.jpg"
     ],
-    "category": "tweet_video"
+    "category": "tweet_image"
   },
   {
     "text": "ダンス部においでよ！",
     "img": [
-      "sample.mp4"
+      "shodo1.jpg",
+      "shodo2.jpg"
     ],
-    "category": "tweet_video"
+    "category": "tweet_image"
   }
 ]
 
