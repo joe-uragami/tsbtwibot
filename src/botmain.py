@@ -30,7 +30,7 @@ def tweet_introduction(api):
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
-    api.PostUpdates(status=intro['text'], media=media_list, media_category='tweet_video')
+    api.PostUpdates(status=intro['text'], media=media_list, media_category=intro['category'])
 
 
 def follow_back(api):

@@ -3,13 +3,15 @@
     "text": "特ソン部においでよ！",
     "img": [
       "sample.mp4"
-    ]
+    ],
+    "category": "tweet_video"
   },
   {
     "text": "ダンス部においでよ！",
     "img": [
       "sample.mp4"
-    ]
+    ],
+    "category": "tweet_video"
   }
 ]
 
