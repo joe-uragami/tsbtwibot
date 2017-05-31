@@ -30,8 +30,17 @@ def tweet_introduction(api):
 
     # ツイート実行
     # 複数の画像ツイートがこれでいいのかは検証が必要
-    api.PostUpdates(status=intro['text'], media=media_list, media_category=intro['category'])
+    org = api._RequestUrl
+    api._RequestUrl = waiting(org)
+    api.PostUpdate(status=intro['text'], media=media_list, media_category=intro['category'])
+    api._RequestUrl = org
 
+
+def waiting(func):
+    def wrapper(obj, *args, **kwargs):
+        time.sleep(5)
+        return func(obj, *args, **kwargs)
+    return wrapper
 
 def follow_back(api):
     """
