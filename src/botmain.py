@@ -14,7 +14,7 @@ from datetime import datetime
 abs_path = os.path.abspath(os.path.dirname(__file__))
 
 
-def tweet_introduction(api):
+def tweet_introduction(api, args):
     """
     部活紹介用のデータを読み込み１件ランダムでツイートする
     :param api:Twitter Api
@@ -25,11 +25,25 @@ def tweet_introduction(api):
         intro_list = json.load(f)
 
     intro = random.choice(intro_list)
+    execute_tweet_introduction(api, intro)
 
+    # 以下はテスト実施時のコード
+    # if len(args) == 1:
+    #     intro = random.choice(intro_list)
+    #     execute_tweet_introduction(api, intro)
+    #
+    # else:
+    #     if "full" in args:
+    #         for intro in intro_list:
+    #             execute_tweet_introduction(api, intro)
+    #     else:
+    #         execute_tweet_introduction(api, intro_list[int(args[2])])
+
+
+def execute_tweet_introduction(api, intro):
     media_list = [os.path.join(abs_path, 'attachment', media) for media in intro['img']]
 
     # ツイート実行
-    # 複数の画像ツイートがこれでいいのかは検証が必要
     org = api._RequestUrl
     api._RequestUrl = waiting(org)
     api.PostUpdate(status=intro['text'], media=media_list, media_category=intro['category'])
@@ -102,7 +116,7 @@ def main(args):
 
     if "ti" in args:
         # ランダムツイート
-        tweet_introduction(api)
+        tweet_introduction(api, args)
 
     if "fb" in args:
         # フォローしてくれた人をフォロー
