@@ -18,26 +18,23 @@ def tweet_introduction(api, args):
     """
     部活紹介用のデータを読み込み１件ランダムでツイートする
     :param api:Twitter Api
+    :param args:[1]実施する関数の識別(ここでは"ti"), [2]fullだったら全種類をツイート、数字だったらその添字の文をツイート、引数がなければランダムツイート
     :return:
     """
     # データ取得
     with open(os.path.join(abs_path, 'introduction.json'), 'r') as f:
         intro_list = json.load(f)
 
-    intro = random.choice(intro_list)
-    execute_tweet_introduction(api, intro)
+    if len(args) == 1:
+        intro = random.choice(intro_list)
+        execute_tweet_introduction(api, intro)
 
-    # 以下はテスト実施時のコード
-    # if len(args) == 1:
-    #     intro = random.choice(intro_list)
-    #     execute_tweet_introduction(api, intro)
-    #
-    # else:
-    #     if "full" in args:
-    #         for intro in intro_list:
-    #             execute_tweet_introduction(api, intro)
-    #     else:
-    #         execute_tweet_introduction(api, intro_list[int(args[2])])
+    else:
+        if "full" in args:
+            for intro in intro_list:
+                execute_tweet_introduction(api, intro)
+        else:
+            execute_tweet_introduction(api, intro_list[int(args[2])])
 
 
 def execute_tweet_introduction(api, intro):
@@ -55,6 +52,7 @@ def waiting(func):
         time.sleep(5)
         return func(obj, *args, **kwargs)
     return wrapper
+
 
 def follow_back(api):
     """
@@ -94,20 +92,13 @@ def tag_retweet(api, nowtime, lowertime):
                     continue
 
 
-
 def main(args):
-    '''
+    """
     メイン処理、引数に応じて処理を実施する
     :param args:
     :return:
-    '''
+    """
     # API設定は環境変数で指定
-    # api = twitter.Api(consumer_key=os.environ["TEST_CONSUMER_KEY"],
-    #                   consumer_secret=os.environ["TEST_CONSUMER_SECRET"],
-    #                   access_token_key=os.environ["TEST_ACCESS_TOKEN_KEY"],
-    #                   access_token_secret=os.environ["TEST_ACCESS_TOKEN_SECRET"]
-    #                   )
-
     api = twitter.Api(consumer_key=os.environ["CONSUMER_KEY"],
                       consumer_secret=os.environ["CONSUMER_SECRET"],
                       access_token_key=os.environ["ACCESS_TOKEN_KEY"],
