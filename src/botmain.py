@@ -25,16 +25,20 @@ def tweet_introduction(api, args):
     with open(os.path.join(abs_path, 'introduction.json'), 'r') as f:
         intro_list = json.load(f)
 
-    if len(args) == 1:
-        intro = random.choice(intro_list)
-        execute_tweet_introduction(api, intro)
+    intro = random.choice(intro_list)
+    execute_tweet_introduction(api, intro)
 
-    else:
-        if "full" in args:
-            for intro in intro_list:
-                execute_tweet_introduction(api, intro)
-        else:
-            execute_tweet_introduction(api, intro_list[int(args[2])])
+    # 以下はテスト時のコード
+    # if len(args) == 1:
+    #     intro = random.choice(intro_list)
+    #     execute_tweet_introduction(api, intro)
+    #
+    # else:
+    #     if "full" in args:
+    #         for intro in intro_list:
+    #             execute_tweet_introduction(api, intro)
+    #     else:
+    #         execute_tweet_introduction(api, intro_list[int(args[2])])
 
 
 def execute_tweet_introduction(api, intro):
@@ -99,10 +103,10 @@ def main(args):
     :return:
     """
     # API設定は環境変数で指定
-    api = twitter.Api(consumer_key=os.environ["CONSUMER_KEY"],
-                      consumer_secret=os.environ["CONSUMER_SECRET"],
-                      access_token_key=os.environ["ACCESS_TOKEN_KEY"],
-                      access_token_secret=os.environ["ACCESS_TOKEN_SECRET"]
+    api = twitter.Api(consumer_key=os.environ["TEST_CONSUMER_KEY"],
+                      consumer_secret=os.environ["TEST_CONSUMER_SECRET"],
+                      access_token_key=os.environ["TEST_ACCESS_TOKEN_KEY"],
+                      access_token_secret=os.environ["TEST_ACCESS_TOKEN_SECRET"]
                       )
 
     if "ti" in args:
